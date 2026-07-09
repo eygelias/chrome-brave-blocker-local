@@ -29,3 +29,13 @@ Chrome MV3 no permite copiar 100% Brave Shields porque Brave bloquea desde dentr
 npm install
 npm run build
 ```
+## Descargar desde GitHub
+
+Release:
+
+```txt
+https://github.com/eygelias/chrome-brave-blocker-local/releases
+```
+
+Descarga el ZIP, extráelo, y carga la carpeta `extension` desde `chrome://extensions/`.
+
