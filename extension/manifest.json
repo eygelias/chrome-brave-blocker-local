@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Brave-like Blocker for Chrome (Local)",
+  "version": "2.1.0",
+  "description": "Local MV3 network blocker using Brave/uBO-style YouTube player response cleaner.",
+  "permissions": [
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      { "id": "ruleset_1", "enabled": true, "path": "rulesets/ruleset_1/ruleset_1.json" },
+      { "id": "ruleset_2", "enabled": true, "path": "rulesets/ruleset_2/ruleset_2.json" },
+      { "id": "ruleset_3", "enabled": true, "path": "rulesets/ruleset_3/ruleset_3.json" },
+      { "id": "ruleset_4", "enabled": true, "path": "rulesets/ruleset_4/ruleset_4.json" },
+      { "id": "ruleset_5", "enabled": true, "path": "rulesets/ruleset_5/ruleset_5.json" },
+      { "id": "ruleset_6", "enabled": true, "path": "rulesets/ruleset_6/ruleset_6.json" }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.youtube.com/*",
+        "*://m.youtube.com/*"
+      ],
+      "js": [
+        "yt-main.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false,
+      "world": "MAIN"
+    }
+  ]
+}

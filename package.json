@@ -1,0 +1,12 @@
+{
+  "name": "chrome-brave-blocker-local",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Local Chrome MV3 ad blocker inspired by Brave/uBO rules",
+  "scripts": {
+    "build": "python build_extension.py"
+  },
+  "dependencies": {
+    "@adguard/tsurlfilter": "5.0.1"
+  }
+}
