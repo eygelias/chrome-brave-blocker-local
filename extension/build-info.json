@@ -1,6 +1,6 @@
 {
-  "version": "3.0.0",
-  "generated_at": "2026-07-29T16:21:18Z",
+  "version": "3.0.1",
+  "generated_at": "2026-07-29T17:22:42Z",
   "upstream": {
     "title": "Brave adblock catalog snapshot",
     "url": "https://github.com/brave/adblock-resources/blob/b77c5758b9c752b24a1d2184b978ffce1f8f4611/filter_lists/list_catalog.json",
@@ -65,8 +65,8 @@
         {
           "name": "uBlock Origin general filters",
           "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-general.txt",
-          "bytes": 647010,
-          "sha256": "9c9fa322f2217527a909a0cfd88bc1c24521afb949d9f2cacfbcd51872f9bb30"
+          "bytes": 647020,
+          "sha256": "174ff379f98709fa61716941e3eaf59dccea59b5a7bb8ea6af967fb87f01f8ba"
         },
         {
           "name": "uBlock Origin badware risks",
@@ -101,8 +101,8 @@
         {
           "name": "EasyList",
           "url": "https://easylist.to/easylist/easylist.txt",
-          "bytes": 2208108,
-          "sha256": "68572554fd7645a7bec7f3c09d9f4cf5fd21bd28ac59a1623d7abc7d9b1eb3ab"
+          "bytes": 2208536,
+          "sha256": "1b7fd7906320097b460de31c33b821216a80fddd0a0addb0bc077918ed0e9670"
         },
         {
           "name": "URLhaus malicious URL blocklist",
@@ -144,7 +144,7 @@
           "name": "EasyPrivacy",
           "url": "https://easylist.to/easylist/easyprivacy.txt",
           "bytes": 1491031,
-          "sha256": "bbbb38c2ec9e1ca17e9be17883dfa0d124e8d994d038ad91d0d77e62c263bd16"
+          "sha256": "b1409f3db1f95bc61663cf4d2d614fa3fe7a9aab20464e07a084ef9184f356f5"
         },
         {
           "name": "uBlock Origin privacy",
@@ -180,7 +180,7 @@
           "name": "EasyList Spanish",
           "url": "https://easylist-downloads.adblockplus.org/easylistspanish.txt",
           "bytes": 126845,
-          "sha256": "90b4d7b8ce2dd4d0ba317839c109eeb8e619b0536b450483ec50dd31c818c5c6"
+          "sha256": "d0dfa4140c156308a4edcf8fbbd1b00e6516895395789fe5ed247c3d2a2ac520"
         },
         {
           "name": "AdGuard Spanish and Portuguese",
@@ -232,60 +232,102 @@
     "rulesets": [
       {
         "id": "ruleset_1",
-        "rules": 68186
+        "rules": 68063,
+        "unsafeDropped": 0
       },
       {
         "id": "ruleset_2",
-        "rules": 56838
+        "rules": 56618,
+        "unsafeDropped": 1
       },
       {
         "id": "ruleset_3",
-        "rules": 554
+        "rules": 554,
+        "unsafeDropped": 0
       },
       {
         "id": "ruleset_4",
-        "rules": 1743
+        "rules": 1743,
+        "unsafeDropped": 0
       },
       {
         "id": "ruleset_5",
-        "rules": 2141
+        "rules": 2139,
+        "unsafeDropped": 0
       },
       {
         "id": "ruleset_6",
-        "rules": 22
+        "rules": 22,
+        "unsafeDropped": 0
       }
     ],
     "conversionErrors": {
-      "Error": 1064,
+      "Error": 1046,
       "EmptyDomainsError": 1,
-      "UnsupportedRegexpError": 541,
-      "UnsupportedModifierError": 3866
+      "UnsupportedRegexpError": 458,
+      "UnsupportedModifierError": 3842
     },
-    "limitations": {}
+    "limitations": {},
+    "sanitization": {
+      "droppedRules": 532,
+      "unsupportedModifiers": {
+        "urlskip": 224,
+        "strict1p": 24,
+        "strict3p": 13,
+        "1\\.1 google$/": 2,
+        "ipaddress": 51,
+        "_____": 3,
+        "from": 120,
+        "uritransform": 16,
+        ")/ -base64": 1,
+        "popunder": 25,
+        "3}\\}\\}\\)\\}\\)\\}\\}//": 1,
+        "100/clearInterval(timer);resolve();}, 100/gms": 1,
+        "cname": 29,
+        "11}(?:(?!\"ads\":\\{\"id\":\"\").)+?\"ads\":\\{\"id\":\"\\d+\".+?\"__typename\":\"ProductCarouselV2\"\\}": 1,
+        "?//g": 4,
+        "11}(?:(?!\"isTopads\":false).)+?\"isTopads\":true.+?\"__typename\":\"recommendationItem\"\\}": 1,
+        "//g": 1,
+        "\\{\"id\":\\d{9": 1,
+        "11}(?:(?!\"isTopads\":false).)+?\"isTopads\":true(?:(?!\"__typename\":\"recommendationItem\").)+?\"__typename\":\"recommendationItem\"\\}(?": 1,
+        "2/": 2,
+        "null]/": 1,
+        "requestheader": 1,
+        "top": 2,
+        "550}?\\]\\[\\'on\\'\\].*?[a-zA-Z]\\;\\}\\)\\[/[/": 1,
+        "4})$/": 3,
+        "{apply:(n": 3,
+        "o": 3,
+        "w)": 3,
+        "fetch": 1,
+        "tag": 19
+      }
+    },
+    "unsafeDeclarativeRulesDropped": 1
   },
   "cosmetic_rules": 29781,
-  "network_rules": 129483,
+  "network_rules": 129138,
   "regexp_rules": 0,
   "rulesets": [
     {
       "id": "ruleset_1_1",
-      "rules": 19359
+      "rules": 19411
     },
     {
       "id": "ruleset_1_2",
-      "rules": 41728
+      "rules": 41736
     },
     {
       "id": "ruleset_1_3",
-      "rules": 7099
+      "rules": 6916
     },
     {
       "id": "ruleset_2_1",
-      "rules": 40177
+      "rules": 40178
     },
     {
       "id": "ruleset_2_2",
-      "rules": 16660
+      "rules": 16439
     },
     {
       "id": "ruleset_3",
@@ -297,7 +339,7 @@
     },
     {
       "id": "ruleset_5",
-      "rules": 2141
+      "rules": 2139
     },
     {
       "id": "ruleset_6",

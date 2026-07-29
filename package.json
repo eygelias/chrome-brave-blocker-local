@@ -1,12 +1,12 @@
 {
   "name": "chrome-brave-blocker-local",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "description": "Local Chrome and Firefox ad/tracker blocker inspired by Brave Shields",
   "license": "GPL-3.0-only",
   "scripts": {
     "build": "python build_extension.py",
-    "test": "python build_extension.py --check && web-ext lint --source-dir firefox --warnings-as-errors",
+    "test": "node scripts/test_converter_safety.mjs && python build_extension.py --check && web-ext lint --source-dir firefox --warnings-as-errors",
     "package": "python build_extension.py --package"
   },
   "devDependencies": {

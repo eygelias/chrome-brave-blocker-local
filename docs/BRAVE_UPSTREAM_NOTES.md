@@ -45,6 +45,16 @@ Firefox currently sets `GUARANTEED_MINIMUM_STATIC_RULES` to **30,000** and still
 
 Firefox fija actualmente `GUARANTEED_MINIMUM_STATIC_RULES` en **30.000** y aún mantiene pendiente permitir que una extensión exceda ese límite. Por eso la compilación Firefox queda limitada a 30.000 reglas: primero conserva excepciones y reglas prioritarias; luego selecciona uniformemente reglas de dominio y genéricas dentro de presupuestos semánticos. El desglose queda en `firefox/build-info.json`.
 
+## DNR conversion safety / Seguridad de conversión DNR
+
+v3.0.0 was withdrawn after real Chrome testing exposed over-broad generated rules. Some upstream rules used modifiers such as `ipaddress`, `from`, `strict1p`, or `strict3p` that DNR cannot represent. The converter silently omitted those constraints while retaining the blocking action; several results matched every `main_frame` request.
+
+v3.0.1 fails closed: rules containing unrepresentable modifiers are discarded before conversion, and a second structural guard rejects every unscoped catch-all block. `scripts/test_converter_safety.mjs` reproduces the original failure pattern, including Windows CRLF inputs, and runs through `npm test`. Sanitization and pruning totals are recorded in each `build-info.json`.
+
+v3.0.0 fue retirada después de que una prueba real en Chrome revelara reglas generadas demasiado amplias. Algunos filtros upstream usaban modificadores como `ipaddress`, `from`, `strict1p` o `strict3p`, imposibles de representar mediante DNR. El conversor omitía silenciosamente esas condiciones pero conservaba el bloqueo; varias reglas resultantes coincidían con toda navegación `main_frame`.
+
+v3.0.1 aplica cierre seguro: descarta antes de convertir cualquier regla con modificadores no representables y una segunda guarda rechaza todo bloqueo global sin alcance positivo. `scripts/test_converter_safety.mjs` reproduce el fallo original, incluso con entradas CRLF de Windows, y se ejecuta mediante `npm test`. Los totales descartados quedan registrados en cada `build-info.json`.
+
 ## Browser references / Referencias de navegadores
 
 - [Chrome Declarative Net Request](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)

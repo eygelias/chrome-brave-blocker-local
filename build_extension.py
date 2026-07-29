@@ -566,7 +566,12 @@ def validate_target(target: Path, expected_version: str) -> dict:
             ids.add(rule_id)
             if not isinstance(rule.get("action"), dict) or not isinstance(rule.get("condition"), dict):
                 raise ValueError(f"Invalid DNR rule shape in {path}: {rule_id}")
-            if "regexFilter" in rule["condition"]:
+            condition = rule["condition"]
+            catch_all = condition.get("urlFilter") in (None, "*") and "regexFilter" not in condition
+            positively_scoped = bool(condition.get("requestDomains") or condition.get("initiatorDomains"))
+            if rule["action"].get("type") == "block" and catch_all and not positively_scoped:
+                raise ValueError(f"Unsafe unscoped catch-all block rule in {path}: {rule_id}")
+            if "regexFilter" in condition:
                 regexp_total += 1
         total += len(rules)
 

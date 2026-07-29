@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Brave-like Blocker Local (Chrome)",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Bloqueador local inspirado en Brave | Local ad/tracker blocker inspired by Brave.",
   "homepage_url": "https://github.com/eygelias/chrome-brave-blocker-local",
   "permissions": [

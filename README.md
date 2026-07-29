@@ -4,6 +4,8 @@
 
 > **Unofficial / No oficial.** Independent WebExtension inspired by Brave Shields. Not affiliated with or endorsed by Brave Software, Google, or Mozilla.
 
+> **Corrección v3.0.1 / v3.0.1 hotfix:** descarta modificadores que DNR no puede representar y rechaza reglas globales peligrosas. v3.0.0 fue retirada porque podía bloquear toda la navegación.
+
 ---
 
 # Español
@@ -14,7 +16,7 @@ Bloqueador local y silencioso para **Chrome/Chromium Manifest V3** y **Firefox M
 
 No copia 100 % Brave Shields: Brave usa `adblock-rust` dentro del navegador y una extensión está limitada por las API WebExtension. Este proyecto replica únicamente lo que Chrome y Firefox permiten de forma segura.
 
-## Novedades de v3.0.0
+## Novedades de v3.0.1
 
 - Nueva extensión para **Firefox**.
 - Fuentes sincronizadas con el [catálogo oficial de Brave](https://github.com/brave/adblock-resources/blob/b77c5758b9c752b24a1d2184b978ffce1f8f4611/filter_lists/list_catalog.json):
@@ -24,6 +26,7 @@ No copia 100 % Brave Shields: Brave usa `adblock-rust` dentro del navegador y un
   - avisos de cookies y promociones de aplicaciones;
   - URLhaus para dominios maliciosos.
 - Conversor DNR moderno con soporte de `$method`, `$urltransform`, `$removeparam` y otros modificadores que DNR puede representar.
+- Guardas de seguridad eliminan reglas con modificadores no representables y rechazan cualquier bloqueo global DNR sin dominio iniciador o destino.
 - CSS cosmético endurecido: rechaza `url()`, `image-set()`, declaraciones inyectables y selectores procedimentales no compatibles.
 - Limpieza YouTube reforzada para `player`, Shorts, `fetch`, XHR, `Response.json`, `JSON.parse` y respuestas iniciales.
 - Script oficial actual de Brave para retrasos **YouTube SABR**, bajo MPL-2.0, activado solo en `m.youtube.com` como en el despliegue actual de Brave.
@@ -53,7 +56,7 @@ Chrome empaqueta todas las reglas DNR compatibles de la compilación; Firefox qu
 ![Tutorial de instalación en Chrome](docs/images/chrome-install.png)
 
 1. Abre [Releases](https://github.com/eygelias/chrome-brave-blocker-local/releases).
-2. Descarga `chrome-brave-blocker-local-v3.0.0.zip`.
+2. Descarga `chrome-brave-blocker-local-v3.0.1.zip`.
 3. Extrae el ZIP en una carpeta permanente. No la borres después.
 4. Abre Chrome y escribe:
 
@@ -87,7 +90,7 @@ Requiere **Firefox 142 o posterior** para la declaración moderna de no recopila
 ![Tutorial de instalación en Firefox](docs/images/firefox-install.png)
 
 1. Abre [Releases](https://github.com/eygelias/chrome-brave-blocker-local/releases).
-2. Descarga `firefox-brave-blocker-local-v3.0.0.zip`.
+2. Descarga `firefox-brave-blocker-local-v3.0.1.zip`.
 3. Extrae el ZIP.
 4. Abre Firefox y escribe:
 
@@ -107,7 +110,7 @@ Requiere **Firefox 142 o posterior** para la declaración moderna de no recopila
 
 ### Limitación de instalación de Firefox
 
-Firefox normal elimina complementos temporales al reiniciar. Para instalación permanente, Mozilla exige un XPI firmado mediante AMO. El release incluye `firefox-brave-blocker-local-v3.0.0-unsigned.xpi` para pruebas, pero **no se presenta como instalación permanente firmada**.
+Firefox normal elimina complementos temporales al reiniciar. Para instalación permanente, Mozilla exige un XPI firmado mediante AMO. El release incluye `firefox-brave-blocker-local-v3.0.1-unsigned.xpi` para pruebas, pero **no se presenta como instalación permanente firmada**.
 
 Documentación oficial: [instalación temporal](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/) y [firma/distribución](https://extensionworkshop.com/documentation/publish/signing-and-distribution-overview/).
 
@@ -148,9 +151,9 @@ Resultados:
 extension/   Extensión Chrome lista para cargar
 firefox/     Extensión Firefox lista para carga temporal
 
-dist/chrome-brave-blocker-local-v3.0.0.zip
-dist/firefox-brave-blocker-local-v3.0.0.zip
-dist/firefox-brave-blocker-local-v3.0.0-unsigned.xpi
+dist/chrome-brave-blocker-local-v3.0.1.zip
+dist/firefox-brave-blocker-local-v3.0.1.zip
+dist/firefox-brave-blocker-local-v3.0.1-unsigned.xpi
 ```
 
 ## Licencias
@@ -167,12 +170,13 @@ Silent local ad and tracker blocker for **Chrome/Chromium Manifest V3** and **Fi
 
 It does not copy Brave Shields one-for-one: Brave runs `adblock-rust` inside the browser, while extensions are constrained by WebExtension APIs. This project only reproduces behavior Chrome and Firefox can safely expose.
 
-## What changed in v3.0.0
+## What changed in v3.0.1
 
 - Added a **Firefox** build.
 - Aligned sources with Brave's [official filter catalog](https://github.com/brave/adblock-resources/blob/b77c5758b9c752b24a1d2184b978ffce1f8f4611/filter_lists/list_catalog.json).
 - Added Brave first-party, Spanish/Portuguese, cookie-notice, mobile-promotion, and URLhaus sources.
 - Modern DNR conversion for `$method`, `$urltransform`, `$removeparam`, and other expressible modifiers.
+- Conversion safety guards drop rules with unrepresentable modifiers and reject every unscoped global DNR block.
 - Brave-inspired cosmetic CSS hardening against `url()`, `image-set()`, injectable declarations, and unsupported procedural selectors.
 - Hardened YouTube response pruning for player endpoints, Shorts, `fetch`, XHR, `Response.json`, `JSON.parse`, and initial player data.
 - Vendored Brave's current MPL-2.0 YouTube SABR backoff fix, enabled only on `m.youtube.com`, matching Brave's cautious rollout.
@@ -188,7 +192,7 @@ Chrome bundles every compatible DNR rule produced by the build; Firefox is cappe
 ![Chrome installation tutorial](docs/images/chrome-install.png)
 
 1. Open [Releases](https://github.com/eygelias/chrome-brave-blocker-local/releases).
-2. Download `chrome-brave-blocker-local-v3.0.0.zip`.
+2. Download `chrome-brave-blocker-local-v3.0.1.zip`.
 3. Extract it to a permanent folder.
 4. Open:
 
@@ -217,7 +221,7 @@ Requires **Firefox 142 or later** for Mozilla's current no-data-collection manif
 ![Firefox installation tutorial](docs/images/firefox-install.png)
 
 1. Open [Releases](https://github.com/eygelias/chrome-brave-blocker-local/releases).
-2. Download `firefox-brave-blocker-local-v3.0.0.zip`.
+2. Download `firefox-brave-blocker-local-v3.0.1.zip`.
 3. Extract it.
 4. Open:
 
