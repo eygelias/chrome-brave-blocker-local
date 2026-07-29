@@ -1,9 +1,14 @@
 node_modules/
+__pycache__/
+*.pyc
+filters/
+.build/
+dist/
+
 extension.pem
 extension.crx
+*.xpi
 .DS_Store
 Thumbs.db
 
 extension/_metadata/
-
-dist/

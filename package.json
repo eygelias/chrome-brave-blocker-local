@@ -1,12 +1,17 @@
 {
   "name": "chrome-brave-blocker-local",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "private": true,
-  "description": "Local Chrome MV3 ad blocker inspired by Brave/uBO rules",
+  "description": "Local Chrome and Firefox ad/tracker blocker inspired by Brave Shields",
+  "license": "GPL-3.0-only",
   "scripts": {
-    "build": "python build_extension.py"
+    "build": "python build_extension.py",
+    "test": "python build_extension.py --check && web-ext lint --source-dir firefox --warnings-as-errors",
+    "package": "python build_extension.py --package"
   },
-  "dependencies": {
-    "@adguard/tsurlfilter": "5.0.1"
+  "devDependencies": {
+    "@adguard/dnr-converter": "1.1.0",
+    "@adguard/re2-wasm": "1.2.0",
+    "web-ext": "10.5.0"
   }
 }

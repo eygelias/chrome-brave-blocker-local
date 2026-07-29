@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Brave-like Blocker Local (Chrome)",
+  "name": "Brave-like Blocker Local (Firefox)",
   "version": "3.0.0",
   "description": "Bloqueador local inspirado en Brave | Local ad/tracker blocker inspired by Brave.",
   "homepage_url": "https://github.com/eygelias/chrome-brave-blocker-local",
@@ -13,49 +13,39 @@
   "declarative_net_request": {
     "rule_resources": [
       {
-        "id": "ruleset_1_1",
+        "id": "ruleset_1_fx_1",
         "enabled": true,
-        "path": "rulesets/ruleset_1_1/ruleset_1_1.json"
+        "path": "rulesets/ruleset_1_fx_1/ruleset_1_fx_1.json"
       },
       {
-        "id": "ruleset_1_2",
+        "id": "ruleset_1_fx_2",
         "enabled": true,
-        "path": "rulesets/ruleset_1_2/ruleset_1_2.json"
+        "path": "rulesets/ruleset_1_fx_2/ruleset_1_fx_2.json"
       },
       {
-        "id": "ruleset_1_3",
+        "id": "ruleset_2_fx",
         "enabled": true,
-        "path": "rulesets/ruleset_1_3/ruleset_1_3.json"
+        "path": "rulesets/ruleset_2_fx/ruleset_2_fx.json"
       },
       {
-        "id": "ruleset_2_1",
+        "id": "ruleset_3_fx",
         "enabled": true,
-        "path": "rulesets/ruleset_2_1/ruleset_2_1.json"
+        "path": "rulesets/ruleset_3_fx/ruleset_3_fx.json"
       },
       {
-        "id": "ruleset_2_2",
+        "id": "ruleset_4_fx",
         "enabled": true,
-        "path": "rulesets/ruleset_2_2/ruleset_2_2.json"
+        "path": "rulesets/ruleset_4_fx/ruleset_4_fx.json"
       },
       {
-        "id": "ruleset_3",
+        "id": "ruleset_5_fx",
         "enabled": true,
-        "path": "rulesets/ruleset_3/ruleset_3.json"
+        "path": "rulesets/ruleset_5_fx/ruleset_5_fx.json"
       },
       {
-        "id": "ruleset_4",
+        "id": "ruleset_6_fx",
         "enabled": true,
-        "path": "rulesets/ruleset_4/ruleset_4.json"
-      },
-      {
-        "id": "ruleset_5",
-        "enabled": true,
-        "path": "rulesets/ruleset_5/ruleset_5.json"
-      },
-      {
-        "id": "ruleset_6",
-        "enabled": true,
-        "path": "rulesets/ruleset_6/ruleset_6.json"
+        "path": "rulesets/ruleset_6_fx/ruleset_6_fx.json"
       }
     ]
   },
@@ -105,5 +95,15 @@
       "world": "MAIN"
     }
   ],
-  "minimum_chrome_version": "120"
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "brave-like-blocker-local@eygelias.github.io",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      },
+      "strict_min_version": "142.0"
+    }
+  }
 }

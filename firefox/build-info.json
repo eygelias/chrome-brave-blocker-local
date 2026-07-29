@@ -1,0 +1,355 @@
+{
+  "version": "3.0.0",
+  "generated_at": "2026-07-29T16:21:18Z",
+  "upstream": {
+    "title": "Brave adblock catalog snapshot",
+    "url": "https://github.com/brave/adblock-resources/blob/b77c5758b9c752b24a1d2184b978ffce1f8f4611/filter_lists/list_catalog.json",
+    "adblock_resources_commit": "b77c5758b9c752b24a1d2184b978ffce1f8f4611",
+    "adblock_lists_commit": "1c7934cd5f8a348e7c7a8394e810199f860af988",
+    "adblock_rust_release": "0.13.2",
+    "brave_core_adblock_rust_release": "0.13.0"
+  },
+  "filter_groups": [
+    {
+      "id": 1,
+      "name": "Brave default adblock filters (desktop-compatible)",
+      "sources": [
+        {
+          "name": "uBlock Origin filters",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
+          "bytes": 472159,
+          "sha256": "59774b7433695ba1d437d4cc2d91b9cb3fc70e51a68e8a0ff3f4d2739c457c3c"
+        },
+        {
+          "name": "uBlock Origin 2020 filters",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt",
+          "bytes": 130679,
+          "sha256": "20ea778ccc7c80f3ec3bd306b71177dfe69d906d5d12bb573d945810d72876e8"
+        },
+        {
+          "name": "uBlock Origin 2021 filters",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt",
+          "bytes": 166790,
+          "sha256": "65581044e8f04f9965ed7dc3b738622b3d7968cd250c0a0be1083c9925fd24bc"
+        },
+        {
+          "name": "uBlock Origin 2022 filters",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt",
+          "bytes": 159078,
+          "sha256": "e3439e802774b8b611f2c1350bdc5138f3822d2c1d9e53104cec8b442e1570f7"
+        },
+        {
+          "name": "uBlock Origin 2023 filters",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt",
+          "bytes": 217576,
+          "sha256": "442de28f96f598eb35c78291b381d4ee4ac666a00b9e040c1a53dfa5ee037321"
+        },
+        {
+          "name": "uBlock Origin 2024 filters",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2024.txt",
+          "bytes": 231546,
+          "sha256": "efc313e75274d142a5ce0fbdea50659deda1b7a1b50bc055b75d7add31d557fc"
+        },
+        {
+          "name": "uBlock Origin 2025 filters",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2025.txt",
+          "bytes": 166613,
+          "sha256": "88d34a74f37f4e4c2650c264a5d87b3148a909a9cc409ef45d949588c10ff457"
+        },
+        {
+          "name": "uBlock Origin 2026 filters",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2026.txt",
+          "bytes": 64438,
+          "sha256": "fe5aa75fbfc5dc5c01f2032aff00d9ff090dc0ac4c555b57d94c80ce03ade154"
+        },
+        {
+          "name": "uBlock Origin general filters",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-general.txt",
+          "bytes": 647010,
+          "sha256": "9c9fa322f2217527a909a0cfd88bc1c24521afb949d9f2cacfbcd51872f9bb30"
+        },
+        {
+          "name": "uBlock Origin badware risks",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
+          "bytes": 252747,
+          "sha256": "49b30c03aaa65ed1b75ffc2276482eab7efa6f7c294852adf39241a9c03f11fa"
+        },
+        {
+          "name": "uBlock Origin resource abuse",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
+          "bytes": 8384,
+          "sha256": "26e89c6dab190b00e18f4be32f6a2660480572cfb6ec2cf67b382053b2cf5269"
+        },
+        {
+          "name": "uBlock Origin unbreak",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+          "bytes": 277514,
+          "sha256": "9052ac657ff6eed8316223658776c662f40381ffbc702abdd3721232ab6d4751"
+        },
+        {
+          "name": "uBlock Origin quick fixes",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt",
+          "bytes": 73744,
+          "sha256": "f94b871c91eae3bda7c783e4cca0ea03c8a5965eaf8ffe289c105565d9e98e73"
+        },
+        {
+          "name": "uBlock Origin link shorteners",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubo-link-shorteners.txt",
+          "bytes": 110244,
+          "sha256": "22d8b45a03734a9a63a54705300ff4293762479859ff80357c722bc95156d649"
+        },
+        {
+          "name": "EasyList",
+          "url": "https://easylist.to/easylist/easylist.txt",
+          "bytes": 2208108,
+          "sha256": "68572554fd7645a7bec7f3c09d9f4cf5fd21bd28ac59a1623d7abc7d9b1eb3ab"
+        },
+        {
+          "name": "URLhaus malicious URL blocklist",
+          "url": "https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-agh-online.txt",
+          "bytes": 33360,
+          "sha256": "bdbb2029f05f0ac5a002594f1a267e9ece0037e236c87f15ee3985757d0174fc"
+        },
+        {
+          "name": "Brave unbreak",
+          "url": "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-unbreak.txt",
+          "bytes": 114576,
+          "sha256": "c7ec3a639e3b79f655bf9381c3d7ce52e1146f6dfe0e34229de3bd97fddec97f"
+        },
+        {
+          "name": "Brave specific",
+          "url": "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-specific.txt",
+          "bytes": 10829,
+          "sha256": "ee24881b897217474f70eb6879c5b3df11d8bdf0ed6009945f361393481f3d8a"
+        },
+        {
+          "name": "Brave social",
+          "url": "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-social.txt",
+          "bytes": 1272,
+          "sha256": "b4a5abdf0388d3cf118096f370cab84d7578221733d27dd04e4bd52dad41a722"
+        },
+        {
+          "name": "Brave unbreak additions",
+          "url": "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-unbreak.txt",
+          "bytes": 24,
+          "sha256": "63a1fdc6aeebbb93b8c15602b6180c85f9aadfddfab200b7c8f4e0cc8ee76159"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Brave default privacy filters",
+      "sources": [
+        {
+          "name": "EasyPrivacy",
+          "url": "https://easylist.to/easylist/easyprivacy.txt",
+          "bytes": 1491031,
+          "sha256": "bbbb38c2ec9e1ca17e9be17883dfa0d124e8d994d038ad91d0d77e62c263bd16"
+        },
+        {
+          "name": "uBlock Origin privacy",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
+          "bytes": 176128,
+          "sha256": "eb5c6d3b609183de62a9dfcb9b3ca59eb8ded872bc772abfc24d739931405996"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Brave first-party filters",
+      "sources": [
+        {
+          "name": "Brave first-party specific",
+          "url": "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt",
+          "bytes": 218513,
+          "sha256": "1b3033b15b05f87caed31f6ed3ef6bf80aba310d25c02db0064e238676a8f394"
+        },
+        {
+          "name": "Brave first-party regional",
+          "url": "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty-regional.txt",
+          "bytes": 51376,
+          "sha256": "c1a06034820b39de381746d9c4ee8251a29f56dbd9c609d404236f4b93d04e39"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Spanish and Portuguese regional filters",
+      "sources": [
+        {
+          "name": "EasyList Spanish",
+          "url": "https://easylist-downloads.adblockplus.org/easylistspanish.txt",
+          "bytes": 126845,
+          "sha256": "90b4d7b8ce2dd4d0ba317839c109eeb8e619b0536b450483ec50dd31c818c5c6"
+        },
+        {
+          "name": "AdGuard Spanish and Portuguese",
+          "url": "https://filters.adtidy.org/extension/ublock/filters/9.txt",
+          "bytes": 353722,
+          "sha256": "2dbf40acfe19ed505a5873f9e481f92a0646e6e5886fa3a0d42733373a4f3af3"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Cookie notice filters enabled by Brave",
+      "sources": [
+        {
+          "name": "EasyList Cookie",
+          "url": "https://secure.fanboy.co.nz/fanboy-cookiemonster_ubo.txt",
+          "bytes": 1184551,
+          "sha256": "ea275c8c52b434633c07af080adf1fa40f7cad229bd2e9e2ffdee824a54c4719"
+        },
+        {
+          "name": "uBlock Origin cookie notices",
+          "url": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances-cookies.txt",
+          "bytes": 370643,
+          "sha256": "43b0b5eae5f0979b7dcafa1df562a7f50c3ec46cc1ee217579e7b3f847c3b00a"
+        },
+        {
+          "name": "Brave cookie-specific additions",
+          "url": "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-cookie-specific.txt",
+          "bytes": 23589,
+          "sha256": "4f7d8da9bed01c53728aa3a1c3170c021fc043ff3d10955e248c9b21817ce60f"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Mobile app promotion filters enabled by Brave",
+      "sources": [
+        {
+          "name": "Fanboy mobile notifications",
+          "url": "https://secure.fanboy.co.nz/fanboy-mobile-notifications.txt",
+          "bytes": 49570,
+          "sha256": "2900ac268a1147f70d1f17acd2a67e6739e961dc387184144f8017fc556059a3"
+        }
+      ]
+    }
+  ],
+  "dnr_converter": "@adguard/dnr-converter 1.1.0",
+  "conversion_report": {
+    "rulesets": [
+      {
+        "id": "ruleset_1",
+        "rules": 68186
+      },
+      {
+        "id": "ruleset_2",
+        "rules": 56838
+      },
+      {
+        "id": "ruleset_3",
+        "rules": 554
+      },
+      {
+        "id": "ruleset_4",
+        "rules": 1743
+      },
+      {
+        "id": "ruleset_5",
+        "rules": 2141
+      },
+      {
+        "id": "ruleset_6",
+        "rules": 22
+      }
+    ],
+    "conversionErrors": {
+      "Error": 1064,
+      "EmptyDomainsError": 1,
+      "UnsupportedRegexpError": 541,
+      "UnsupportedModifierError": 3866
+    },
+    "limitations": {}
+  },
+  "cosmetic_rules": 29781,
+  "network_rules": 30000,
+  "regexp_rules": 0,
+  "rulesets": [
+    {
+      "id": "ruleset_1_fx_1",
+      "rules": 18179
+    },
+    {
+      "id": "ruleset_1_fx_2",
+      "rules": 321
+    },
+    {
+      "id": "ruleset_2_fx",
+      "rules": 8000
+    },
+    {
+      "id": "ruleset_3_fx",
+      "rules": 554
+    },
+    {
+      "id": "ruleset_4_fx",
+      "rules": 1743
+    },
+    {
+      "id": "ruleset_5_fx",
+      "rules": 1181
+    },
+    {
+      "id": "ruleset_6_fx",
+      "rules": 22
+    }
+  ],
+  "firefox_rule_selection": {
+    "limit": 30000,
+    "selected": 30000,
+    "strategy": "all non-block/high-priority rules, then evenly sampled domain and generic block rules",
+    "groups": [
+      {
+        "group": 1,
+        "available": 68186,
+        "essential": 12487,
+        "target_budget": 18500,
+        "budget": 18500,
+        "selected": 18500
+      },
+      {
+        "group": 2,
+        "available": 56837,
+        "essential": 6488,
+        "target_budget": 8000,
+        "budget": 8000,
+        "selected": 8000
+      },
+      {
+        "group": 3,
+        "available": 554,
+        "essential": 139,
+        "target_budget": 554,
+        "budget": 554,
+        "selected": 554
+      },
+      {
+        "group": 4,
+        "available": 1743,
+        "essential": 644,
+        "target_budget": 1743,
+        "budget": 1743,
+        "selected": 1743
+      },
+      {
+        "group": 5,
+        "available": 2141,
+        "essential": 707,
+        "target_budget": 1181,
+        "budget": 1181,
+        "selected": 1181
+      },
+      {
+        "group": 6,
+        "available": 22,
+        "essential": 10,
+        "target_budget": 22,
+        "budget": 22,
+        "selected": 22
+      }
+    ],
+    "source": "https://github.com/mozilla-firefox/firefox/blob/main/toolkit/components/extensions/ExtensionDNRLimits.sys.mjs"
+  }
+}
