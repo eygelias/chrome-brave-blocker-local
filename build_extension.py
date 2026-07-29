@@ -535,6 +535,32 @@ def write_targets(
     }
 
 
+URL_SAFETY_SAMPLES = (
+    ("http://a.invalid/", "http://example.org/path", "http://127.0.0.1:8080/q?x=1", "http://localhost/"),
+    ("https://b.invalid/", "https://sample.net/deep/file.js", "https://192.0.2.1:8443/q?y=2", "https://localhost/"),
+)
+
+
+def _url_filter_regex(url_filter: str, case_sensitive: bool) -> re.Pattern:
+    pattern = url_filter
+    left_anchored = pattern.startswith("|")
+    if left_anchored:
+        pattern = pattern[1:]
+    right_anchored = pattern.endswith("|")
+    if right_anchored:
+        pattern = pattern[:-1]
+    parts = []
+    for char in pattern:
+        if char == "*":
+            parts.append(".*")
+        elif char == "^":
+            parts.append(r"(?:[^a-z0-9_\-.%]|$)")
+        else:
+            parts.append(re.escape(char))
+    expression = f"{'^' if left_anchored else ''}{''.join(parts)}{'$' if right_anchored else ''}"
+    return re.compile(expression, 0 if case_sensitive else re.IGNORECASE)
+
+
 def is_unsafe_unscoped_block(rule: dict) -> bool:
     if rule.get("action", {}).get("type") != "block":
         return False
@@ -548,9 +574,12 @@ def is_unsafe_unscoped_block(rule: dict) -> bool:
     if not isinstance(url_filter, str):
         return True
     literal = re.sub(r"[|*^]", "", url_filter)
-    return not literal or literal in {":", "://", "//", "."} or literal.lower() in {
-        "http", "https", "http:", "https:", "http://", "https://"
-    }
+    if not literal or literal in {":", "://", "//", "."}:
+        return True
+    if url_filter.startswith("||"):
+        return False
+    matcher = _url_filter_regex(url_filter, bool(condition.get("isUrlFilterCaseSensitive")))
+    return any(all(matcher.search(url) for url in urls) for urls in URL_SAFETY_SAMPLES)
 
 
 def validate_target(target: Path, expected_version: str) -> dict:
