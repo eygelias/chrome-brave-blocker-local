@@ -1,4 +1,5 @@
 const PROTOCOL_ONLY_FILTERS = new Set(['http', 'https', 'http:', 'https:', 'http://', 'https://']);
+const UNIVERSAL_PUNCTUATION_FILTERS = new Set([':', '://', '//', '.']);
 
 export const isUnsafeUnscopedBlock = (rule) => {
   if (rule.action?.type !== 'block') return false;
@@ -9,5 +10,5 @@ export const isUnsafeUnscopedBlock = (rule) => {
   const urlFilter = condition.urlFilter;
   if (typeof urlFilter !== 'string') return true;
   const literal = urlFilter.replace(/[|*^]/g, '');
-  return literal === '' || PROTOCOL_ONLY_FILTERS.has(literal.toLowerCase());
+  return literal === '' || UNIVERSAL_PUNCTUATION_FILTERS.has(literal) || PROTOCOL_ONLY_FILTERS.has(literal.toLowerCase());
 };

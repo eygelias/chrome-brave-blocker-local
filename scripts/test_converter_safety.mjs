@@ -47,12 +47,13 @@ assert.equal(report.unsafeDeclarativeRulesDropped, 4);
 assert.equal(rules.length, 1);
 assert.equal(rules[0].condition.urlFilter, '||ads.example^');
 
-const unsafeConditions = ['', '*', '|*', '*|', '|*|', 'http', 'https://', '*http*', '|https*'].map((urlFilter) => ({
+const unsafeConditions = ['', '*', '|*', '*|', '|*|', 'http', 'https://', '*http*', '|https*', '*://*', '*:*', '.*'].map((urlFilter) => ({
   action: { type: 'block' }, condition: { urlFilter, resourceTypes: ['main_frame'] },
 }));
 unsafeConditions.push({ action: { type: 'block' }, condition: { regexFilter: '.*', resourceTypes: ['main_frame'] } });
 assert(unsafeConditions.every(isUnsafeUnscopedBlock));
 assert(!isUnsafeUnscopedBlock({ action: { type: 'block' }, condition: { urlFilter: '||example.test^' } }));
+assert(!isUnsafeUnscopedBlock({ action: { type: 'block' }, condition: { urlFilter: '||[::]^' } }));
 assert(!isUnsafeUnscopedBlock({ action: { type: 'block' }, condition: { urlFilter: '|*', requestDomains: ['example.test'] } }));
 assert(!isUnsafeUnscopedBlock({ action: { type: 'allow' }, condition: { urlFilter: '|*' } }));
 
@@ -62,8 +63,8 @@ const pythonSafety = spawnSync(
     '-c',
     [
       'import build_extension as b',
-      'unsafe = [{"action":{"type":"block"},"condition":{"urlFilter":value,"resourceTypes":["main_frame"]}} for value in ("", "*", "|*", "*|", "|*|", "http", "https://", "*http*", "|https*")] + [{"action":{"type":"block"},"condition":{"regexFilter":".*","resourceTypes":["main_frame"]}}]',
-      'safe = [{"action":{"type":"block"},"condition":{"urlFilter":"||example.test^"}}, {"action":{"type":"block"},"condition":{"urlFilter":"|*","requestDomains":["example.test"]}}, {"action":{"type":"allow"},"condition":{"urlFilter":"|*"}}]',
+      'unsafe = [{"action":{"type":"block"},"condition":{"urlFilter":value,"resourceTypes":["main_frame"]}} for value in ("", "*", "|*", "*|", "|*|", "http", "https://", "*http*", "|https*", "*://*", "*:*", ".*")] + [{"action":{"type":"block"},"condition":{"regexFilter":".*","resourceTypes":["main_frame"]}}]',
+      'safe = [{"action":{"type":"block"},"condition":{"urlFilter":"||example.test^"}}, {"action":{"type":"block"},"condition":{"urlFilter":"||[::]^"}}, {"action":{"type":"block"},"condition":{"urlFilter":"|*","requestDomains":["example.test"]}}, {"action":{"type":"allow"},"condition":{"urlFilter":"|*"}}]',
       'assert all(b.is_unsafe_unscoped_block(rule) for rule in unsafe)',
       'assert not any(b.is_unsafe_unscoped_block(rule) for rule in safe)',
     ].join('; '),

@@ -548,7 +548,9 @@ def is_unsafe_unscoped_block(rule: dict) -> bool:
     if not isinstance(url_filter, str):
         return True
     literal = re.sub(r"[|*^]", "", url_filter)
-    return not literal or literal.lower() in {"http", "https", "http:", "https:", "http://", "https://"}
+    return not literal or literal in {":", "://", "//", "."} or literal.lower() in {
+        "http", "https", "http:", "https:", "http://", "https://"
+    }
 
 
 def validate_target(target: Path, expected_version: str) -> dict:
