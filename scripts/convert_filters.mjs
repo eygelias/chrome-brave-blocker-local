@@ -2,8 +2,13 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { Filter, FilterConverter, Rule } from '@adguard/dnr-converter';
 import { OPTION_NAMES } from '../node_modules/@adguard/dnr-converter/dist/rule/option-names.js';
+import { isUnsafeUnscopedBlock } from './dnr_safety.mjs';
 
-const supportedModifiers = new Set([...Object.values(OPTION_NAMES), 'reason']);
+const silentlyIgnoredModifiers = new Set([OPTION_NAMES.APP, OPTION_NAMES.REFERRERPOLICY]);
+const supportedModifiers = new Set([
+  ...Object.values(OPTION_NAMES).filter((name) => !silentlyIgnoredModifiers.has(name)),
+  'reason',
+]);
 const sanitization = { droppedRules: 0, unsupportedModifiers: {} };
 
 const sanitizeFilter = (text) => text.split('\n').map((rawLine) => {
@@ -29,13 +34,6 @@ const sanitizeFilter = (text) => text.split('\n').map((rawLine) => {
   }
 }).join('\n');
 
-const isUnsafeCatchAllBlock = (rule) => {
-  const condition = rule.condition || {};
-  const catchAll = (condition.urlFilter === undefined || condition.urlFilter === '*') &&
-    condition.regexFilter === undefined;
-  const positivelyScoped = Boolean(condition.requestDomains?.length || condition.initiatorDomains?.length);
-  return rule.action?.type === 'block' && catchAll && !positivelyScoped;
-};
 
 const [filtersDir, outputDir] = process.argv.slice(2);
 if (!filtersDir || !outputDir) {
@@ -69,7 +67,7 @@ const report = {
 for (const { ruleset, errors, limitations } of results) {
   const id = ruleset.getId();
   const rules = ruleset.getDeclarativeRules();
-  const safeRules = rules.filter((rule) => !isUnsafeCatchAllBlock(rule));
+  const safeRules = rules.filter((rule) => !isUnsafeUnscopedBlock(rule));
   const unsafeDropped = rules.length - safeRules.length;
   report.unsafeDeclarativeRulesDropped += unsafeDropped;
   const folder = path.join(resolvedOutputDir, id);

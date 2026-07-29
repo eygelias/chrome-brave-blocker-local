@@ -535,6 +535,22 @@ def write_targets(
     }
 
 
+def is_unsafe_unscoped_block(rule: dict) -> bool:
+    if rule.get("action", {}).get("type") != "block":
+        return False
+    condition = rule.get("condition", {})
+    if condition.get("requestDomains") or condition.get("initiatorDomains"):
+        return False
+    # ponytail: unscoped regex blocks fail closed; Python's regex engine cannot prove RE2 scope safely.
+    if "regexFilter" in condition:
+        return True
+    url_filter = condition.get("urlFilter")
+    if not isinstance(url_filter, str):
+        return True
+    literal = re.sub(r"[|*^]", "", url_filter)
+    return not literal or literal.lower() in {"http", "https", "http:", "https:", "http://", "https://"}
+
+
 def validate_target(target: Path, expected_version: str) -> dict:
     manifest_path = target / "manifest.json"
     data = load_json(manifest_path)
@@ -567,10 +583,8 @@ def validate_target(target: Path, expected_version: str) -> dict:
             if not isinstance(rule.get("action"), dict) or not isinstance(rule.get("condition"), dict):
                 raise ValueError(f"Invalid DNR rule shape in {path}: {rule_id}")
             condition = rule["condition"]
-            catch_all = condition.get("urlFilter") in (None, "*") and "regexFilter" not in condition
-            positively_scoped = bool(condition.get("requestDomains") or condition.get("initiatorDomains"))
-            if rule["action"].get("type") == "block" and catch_all and not positively_scoped:
-                raise ValueError(f"Unsafe unscoped catch-all block rule in {path}: {rule_id}")
+            if is_unsafe_unscoped_block(rule):
+                raise ValueError(f"Unsafe unscoped universal block rule in {path}: {rule_id}")
             if "regexFilter" in condition:
                 regexp_total += 1
         total += len(rules)

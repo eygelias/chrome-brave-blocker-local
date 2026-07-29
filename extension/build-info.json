@@ -1,6 +1,6 @@
 {
   "version": "3.0.1",
-  "generated_at": "2026-07-29T17:22:42Z",
+  "generated_at": "2026-07-29T17:48:29Z",
   "upstream": {
     "title": "Brave adblock catalog snapshot",
     "url": "https://github.com/brave/adblock-resources/blob/b77c5758b9c752b24a1d2184b978ffce1f8f4611/filter_lists/list_catalog.json",
@@ -101,8 +101,8 @@
         {
           "name": "EasyList",
           "url": "https://easylist.to/easylist/easylist.txt",
-          "bytes": 2208536,
-          "sha256": "1b7fd7906320097b460de31c33b821216a80fddd0a0addb0bc077918ed0e9670"
+          "bytes": 2208719,
+          "sha256": "85c244c5d87514ee7d8e02a05d1fecfb5b152c6f267fd80829fef9e22509e0ac"
         },
         {
           "name": "URLhaus malicious URL blocklist",
@@ -143,8 +143,8 @@
         {
           "name": "EasyPrivacy",
           "url": "https://easylist.to/easylist/easyprivacy.txt",
-          "bytes": 1491031,
-          "sha256": "b1409f3db1f95bc61663cf4d2d614fa3fe7a9aab20464e07a084ef9184f356f5"
+          "bytes": 1491158,
+          "sha256": "27309cae932b5d9431522b069fff30b556d61f04a404a9384de2a8d57268048f"
         },
         {
           "name": "uBlock Origin privacy",
@@ -180,7 +180,7 @@
           "name": "EasyList Spanish",
           "url": "https://easylist-downloads.adblockplus.org/easylistspanish.txt",
           "bytes": 126845,
-          "sha256": "d0dfa4140c156308a4edcf8fbbd1b00e6516895395789fe5ed247c3d2a2ac520"
+          "sha256": "18ede46590fe7a67338b54bf83e908dc457aa654ee36ce654d054c16b7b3f7d1"
         },
         {
           "name": "AdGuard Spanish and Portuguese",
@@ -197,8 +197,8 @@
         {
           "name": "EasyList Cookie",
           "url": "https://secure.fanboy.co.nz/fanboy-cookiemonster_ubo.txt",
-          "bytes": 1184551,
-          "sha256": "ea275c8c52b434633c07af080adf1fa40f7cad229bd2e9e2ffdee824a54c4719"
+          "bytes": 1184656,
+          "sha256": "c7ee2cc3d6418eddaf88fa8423841cb84817395b77fd5150040fb3ec0dfab6cc"
         },
         {
           "name": "uBlock Origin cookie notices",
@@ -232,12 +232,12 @@
     "rulesets": [
       {
         "id": "ruleset_1",
-        "rules": 68063,
+        "rules": 68066,
         "unsafeDropped": 0
       },
       {
         "id": "ruleset_2",
-        "rules": 56618,
+        "rules": 56624,
         "unsafeDropped": 1
       },
       {
@@ -306,7 +306,7 @@
     "unsafeDeclarativeRulesDropped": 1
   },
   "cosmetic_rules": 29781,
-  "network_rules": 129138,
+  "network_rules": 129147,
   "regexp_rules": 0,
   "rulesets": [
     {
@@ -319,7 +319,7 @@
     },
     {
       "id": "ruleset_1_3",
-      "rules": 6916
+      "rules": 6919
     },
     {
       "id": "ruleset_2_1",
@@ -327,7 +327,7 @@
     },
     {
       "id": "ruleset_2_2",
-      "rules": 16439
+      "rules": 16445
     },
     {
       "id": "ruleset_3",
