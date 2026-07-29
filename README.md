@@ -26,7 +26,7 @@ No copia 100 % Brave Shields: Brave usa `adblock-rust` dentro del navegador y un
   - avisos de cookies y promociones de aplicaciones;
   - URLhaus para dominios maliciosos.
 - Conversor DNR moderno con soporte de `$method`, `$urltransform`, `$removeparam` y otros modificadores que DNR puede representar.
-- Guardas de seguridad eliminan modificadores no representables —incluidos `$app` y `$referrerpolicy`— y rechazan bloqueos universales o de esquema completo como `|h*` sin dominio iniciador o destino.
+- Guardas de seguridad eliminan modificadores no representables —incluidos `$app` y `$referrerpolicy`— y rechazan bloqueos universales o de esquema completo como `|h*` y `|w*` sin dominio iniciador o destino.
 - CSS cosmético endurecido: rechaza `url()`, `image-set()`, declaraciones inyectables y selectores procedimentales no compatibles.
 - Limpieza YouTube reforzada para `player`, Shorts, `fetch`, XHR, `Response.json`, `JSON.parse` y respuestas iniciales.
 - Script oficial actual de Brave para retrasos **YouTube SABR**, bajo MPL-2.0, activado solo en `m.youtube.com` como en el despliegue actual de Brave.
@@ -176,7 +176,7 @@ It does not copy Brave Shields one-for-one: Brave runs `adblock-rust` inside the
 - Aligned sources with Brave's [official filter catalog](https://github.com/brave/adblock-resources/blob/b77c5758b9c752b24a1d2184b978ffce1f8f4611/filter_lists/list_catalog.json).
 - Added Brave first-party, Spanish/Portuguese, cookie-notice, mobile-promotion, and URLhaus sources.
 - Modern DNR conversion for `$method`, `$urltransform`, `$removeparam`, and other expressible modifiers.
-- Conversion safety guards drop unrepresentable modifiers—including `$app` and `$referrerpolicy`—and reject unscoped universal or scheme-wide DNR blocks such as `|h*`.
+- Conversion safety guards drop unrepresentable modifiers—including `$app` and `$referrerpolicy`—and reject unscoped universal or scheme-wide DNR blocks such as `|h*` and `|w*`.
 - Brave-inspired cosmetic CSS hardening against `url()`, `image-set()`, injectable declarations, and unsupported procedural selectors.
 - Hardened YouTube response pruning for player endpoints, Shorts, `fetch`, XHR, `Response.json`, `JSON.parse`, and initial player data.
 - Vendored Brave's current MPL-2.0 YouTube SABR backoff fix, enabled only on `m.youtube.com`, matching Brave's cautious rollout.

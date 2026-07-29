@@ -26,6 +26,10 @@ await writeFile(
     '*|$doc',
     '|*|$doc',
     '|h*$doc',
+    '|h*^$doc',
+    '|H*$doc',
+    '|H*$doc,match-case',
+    '|w*$websocket',
     '$ping,third-party',
     '',
   ].join('\r\n'),
@@ -44,11 +48,12 @@ assert.equal(report.sanitization.droppedRules, 4);
 assert.equal(report.sanitization.unsupportedModifiers.ipaddress, 1);
 assert.equal(report.sanitization.unsupportedModifiers.app, 2);
 assert.equal(report.sanitization.unsupportedModifiers.referrerpolicy, 1);
-assert.equal(report.unsafeDeclarativeRulesDropped, 5);
-assert.equal(rules.length, 1);
-assert.equal(rules[0].condition.urlFilter, '||ads.example^');
+assert.equal(report.unsafeDeclarativeRulesDropped, 8);
+assert.equal(rules.length, 2);
+assert(rules.some((rule) => rule.condition.urlFilter === '||ads.example^'));
+assert(rules.some((rule) => rule.condition.urlFilter === '|H*' && rule.condition.isUrlFilterCaseSensitive === true));
 
-const unsafeConditions = ['', '*', '|*', '*|', '|*|', 'http', 'https://', '*http*', '|https*', '*://*', '*:*', '.*', '|h*', 'ttp', '*s*'].map((urlFilter) => ({
+const unsafeConditions = ['', '*', '|*', '*|', '|*|', 'http', 'https://', '*http*', '|https*', '*://*', '*:*', '.*', '|h*', 'ttp', '*s*', '|w*', '|ws*', '*wss*'].map((urlFilter) => ({
   action: { type: 'block' }, condition: { urlFilter, resourceTypes: ['main_frame'] },
 }));
 unsafeConditions.push({ action: { type: 'block' }, condition: { regexFilter: '.*', resourceTypes: ['main_frame'] } });
@@ -58,6 +63,7 @@ assert(!isUnsafeUnscopedBlock({ action: { type: 'block' }, condition: { urlFilte
 assert(!isUnsafeUnscopedBlock({ action: { type: 'block' }, condition: { urlFilter: 'php' } }));
 assert(!isUnsafeUnscopedBlock({ action: { type: 'block' }, condition: { urlFilter: '||h*' } }));
 assert(!isUnsafeUnscopedBlock({ action: { type: 'block' }, condition: { urlFilter: 'http|' } }));
+assert(!isUnsafeUnscopedBlock({ action: { type: 'block' }, condition: { urlFilter: '|H*', isUrlFilterCaseSensitive: true } }));
 assert(!isUnsafeUnscopedBlock({ action: { type: 'block' }, condition: { urlFilter: '|*', requestDomains: ['example.test'] } }));
 assert(!isUnsafeUnscopedBlock({ action: { type: 'allow' }, condition: { urlFilter: '|*' } }));
 
@@ -67,8 +73,8 @@ const pythonSafety = spawnSync(
     '-c',
     [
       'import build_extension as b',
-      'unsafe = [{"action":{"type":"block"},"condition":{"urlFilter":value,"resourceTypes":["main_frame"]}} for value in ("", "*", "|*", "*|", "|*|", "http", "https://", "*http*", "|https*", "*://*", "*:*", ".*", "|h*", "ttp", "*s*")] + [{"action":{"type":"block"},"condition":{"regexFilter":".*","resourceTypes":["main_frame"]}}]',
-      'safe = [{"action":{"type":"block"},"condition":{"urlFilter":"||example.test^"}}, {"action":{"type":"block"},"condition":{"urlFilter":"||[::]^"}}, {"action":{"type":"block"},"condition":{"urlFilter":"php"}}, {"action":{"type":"block"},"condition":{"urlFilter":"||h*"}}, {"action":{"type":"block"},"condition":{"urlFilter":"http|"}}, {"action":{"type":"block"},"condition":{"urlFilter":"|*","requestDomains":["example.test"]}}, {"action":{"type":"allow"},"condition":{"urlFilter":"|*"}}]',
+      'unsafe = [{"action":{"type":"block"},"condition":{"urlFilter":value,"resourceTypes":["main_frame"]}} for value in ("", "*", "|*", "*|", "|*|", "http", "https://", "*http*", "|https*", "*://*", "*:*", ".*", "|h*", "ttp", "*s*", "|w*", "|ws*", "*wss*")] + [{"action":{"type":"block"},"condition":{"regexFilter":".*","resourceTypes":["main_frame"]}}]',
+      'safe = [{"action":{"type":"block"},"condition":{"urlFilter":"||example.test^"}}, {"action":{"type":"block"},"condition":{"urlFilter":"||[::]^"}}, {"action":{"type":"block"},"condition":{"urlFilter":"php"}}, {"action":{"type":"block"},"condition":{"urlFilter":"||h*"}}, {"action":{"type":"block"},"condition":{"urlFilter":"http|"}}, {"action":{"type":"block"},"condition":{"urlFilter":"|H*","isUrlFilterCaseSensitive":True}}, {"action":{"type":"block"},"condition":{"urlFilter":"|*","requestDomains":["example.test"]}}, {"action":{"type":"allow"},"condition":{"urlFilter":"|*"}}]',
       'assert all(b.is_unsafe_unscoped_block(rule) for rule in unsafe)',
       'assert not any(b.is_unsafe_unscoped_block(rule) for rule in safe)',
     ].join('; '),
