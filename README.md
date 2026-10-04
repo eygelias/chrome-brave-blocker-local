@@ -268,3 +268,7 @@ npm run package
 ```
 
 Project-authored code is GPL-3.0-only. Brave material remains MPL-2.0. Generated filter artifacts retain upstream terms. See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+
+---
+**SEO Tags:** $tags
