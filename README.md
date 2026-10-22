@@ -61,6 +61,8 @@ Detalles técnicos y evidencia: [`docs/BRAVE_UPSTREAM_NOTES.md`](docs/BRAVE_UPST
 
 ![Tutorial de instalación en Chrome](docs/images/chrome-install.png)
 
+> 📹 **Video tutorial paso a paso:** [Descargar / Ver video tutorial MP4](https://github.com/eygelias/chrome-brave-blocker-local/releases/download/v3.1.0/tutorial_instalacion_chrome.mp4) (29s en HD).
+
 1. Abre [Releases](https://github.com/eygelias/chrome-brave-blocker-local/releases).
 2. Descarga `chrome-brave-blocker-local-v3.1.0.zip`.
 3. Extrae el ZIP en una carpeta permanente (por ejemplo `C:\Program Files\Blocker` o tu carpeta de usuario).
