@@ -1,6 +1,14 @@
 # Brave-like Blocker Local — Chrome + Firefox
 
-[Español](#español) · [English](#english) · [Brave upstream study](docs/BRAVE_UPSTREAM_NOTES.md) · [Releases](https://github.com/eygelias/chrome-brave-blocker-local/releases)
+[Español](#español) · [English](#english) · [Brave upstream study](docs/BRAVE_UPSTREAM_NOTES.md) · [Releases](https://github.com/eygelias/chrome-brave-blocker-local/releases) · [Video Tutorial](https://github.com/eygelias/chrome-brave-blocker-local/releases/download/v3.1.0/tutorial_instalacion_chrome.mp4)
+
+<p align="center">
+  <a href="https://github.com/eygelias/chrome-brave-blocker-local/releases/download/v3.1.0/tutorial_instalacion_chrome.mp4" title="Clic para ver o descargar el video tutorial completo en HD (MP4)">
+    <img src="docs/images/tutorial_instalacion.gif" alt="Tutorial de instalación paso a paso en Google Chrome" width="100%" style="border-radius: 8px; max-width: 900px;" />
+  </a>
+  <br>
+  <sub>📹 <b>Tutorial en video: Cómo instalar la extensión en Google Chrome en menos de 30 segundos.</b> <i>(Haz clic en la imagen para abrir/descargar el video en alta resolución HD)</i></sub>
+</p>
 
 > **Unofficial / No oficial.** Independent WebExtension inspired by Brave Shields. Not affiliated with or endorsed by Brave Software, Google, or Mozilla.
 
