@@ -1,7 +1,3 @@
-// Vendored from Brave adblock-resources commit b77c5758b9c752b24a1d2184b978ffce1f8f4611.
-// Source: https://github.com/brave/adblock-resources/blob/b77c5758b9c752b24a1d2184b978ffce1f8f4611/resources/brave-yt-sabr-fix.js
-// License: Mozilla Public License 2.0 (see LICENSES/MPL-2.0.txt).
-//
 // YouTube's SABR (Server Adaptive Bitrate) protocol sends a backoffTimeMs
 // value telling the player to wait before requesting video data. This
 // covers the ad slot duration. Without an adblocker the ad fills the wait,
@@ -76,11 +72,11 @@
         player.cancelPlayback();
 
         const realLoad = player.loadVideoById.bind(player);
-
+        
         player.loadVideoById = () => {}; // suppress during patch
         // Restore after a tick (give player time to settle)
-        setTimeout(() => {
-            player.loadVideoById = realLoad;
+        setTimeout(() => { 
+            player.loadVideoById = realLoad; 
             player.loadVideoById(vid);
         }, 1000);
         log('forced fresh ad-free session for', vid);
@@ -208,3 +204,4 @@
 
     log('loaded');
 })();
+

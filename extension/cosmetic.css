@@ -51,6 +51,7 @@ a[href*="/go.php?a_aid="] { display: none !important; }
 [href^="https://wap4dollar.com/ad/nonadult/serve.php"] { display: none !important; }
 [href^="https://go.rdrjmp.com/"] { display: none !important; }
 [href^="https://www.safestcontentgate.com/"] { display: none !important; }
+#vplayer ~ img[id][onclick] { display: none !important; }
 .fints-block__row { display: none !important; }
 div[id][style^="position: fixed; inset: 0px; z-index: 2147483647; background: black"][style*="opacity: 0.01"] { display: none !important; }
 #playerOverlay[style="position:absolute; z-index:3"] { display: none !important; }
@@ -63,6 +64,7 @@ div[class$="player-promo-col"] { display: none !important; }
 .player-bns-block { display: none !important; }
 [href^="https://exi8ef83z9.com/"] { display: none !important; }
 [href^="//taghaugh.com/"] { display: none !important; }
+.home a[href^="https://s.zline0.com/"] { display: none !important; }
 a[href*=".click/?z="][href*="&n"] { display: none !important; }
 div#spot-holder.spot-holder[style="display: block;"] { display: none !important; }
 .gallery-bns-bl { display: none !important; }
@@ -118,7 +120,6 @@ div[style="position: fixed; display: block; width: 100%; height: 100%; inset: 0p
 .adde_modal_detector { display: none !important; }
 .adde_modal-overlay { display: none !important; }
 #video-id_fluid_html_on_pause { display: none !important; }
-.ninja-recommend-block { display: none !important; }
 div[style^="position:fixed;inset:0px;z-index:2147483647;background:black;opacity:0.01"] { display: none !important; }
 div[style^="position: fixed; inset: 0px; z-index: 2147483647; background: black; opacity: 0.01"] { display: none !important; }
 iframe.lazyloaded[data-src^="https://rcm-fe.amazon-adsystem.com/"] { display: none !important; }
@@ -126,6 +127,7 @@ iframe.lazyloaded[data-src^="https://rcm-fe.amazon-adsystem.com/"] { display: no
 a[href^="https://go.awdeliverynet.com/"] { display: none !important; }
 a[href^="https://track.cam4tracking.com/"] { display: none !important; }
 .fp-player > div[style="position: absolute; inset: 0px; overflow: hidden; z-index: 160; background: transparent; display: block;"] { display: none !important; }
+.container a[href^="https://insensitiveshoweraudible.com/"] { display: none !important; }
 #anuncio { display: none !important; }
 #player div[style$="cursor: pointer; position: absolute; width: 100%; height: 100%; padding: 1rem; z-index: 2147483647;"] { display: none !important; }
 #video_player ~ div[id] div[style^="position:fixed;inset:0px;z-index:"] { display: none !important; }
@@ -165,8 +167,13 @@ a.tdn[href^="https://landing.brazzersnetwork.com/"] { display: none !important; 
 #main-content a[href^="https://hub.buzzaffiliates.com/"] { display: none !important; }
 .flex a[href^="http://adpostup.com/"] { display: none !important; }
 body > #mdl-register.modal.anm-e.regnow { display: none !important; }
+.page-layout a[href^="https://hashcounts.com/"] { display: none !important; }
 .container a[title="AI Jerk OFF"][href][target="_blank"] { display: none !important; }
+.ad-banner-slot { display: none !important; }
+.post-template-default a[href^="https://go."][href*="/smartpop/"] { display: none !important; }
+.post-template-default a[href^="https://www.ourdreamersai13.com/"] { display: none !important; }
 .nav-item[href^="https://candyai.gg/"] { display: none !important; }
+#kt_player ~ #sp-player { display: none !important; }
 .bloc-pub { display: none !important; }
 .bloc-pub2 { display: none !important; }
 #invideo_data { display: none !important; }
@@ -181,8 +188,10 @@ body > #mdl-register.modal.anm-e.regnow { display: none !important; }
 .preroll-blocker { display: none !important; }
 #kt_player #ads_iframe { display: none !important; }
 #kt_player .fp-brand { display: none !important; }
+.ID_live_cam_inner { display: none !important; }
 .container a[href^="https://go.mavrtracktor.com/"] { display: none !important; }
 .container a[href^="https://seduced.com"][href*="ref="] { display: none !important; }
+.asside-link { display: none !important; }
 #dontfoid { display: none !important; }
 div[style="top: 0px; left: 0px; width: 1287px; height: 500px; position: fixed; z-index: 2147483647;"] { display: none !important; }
 div[style="position: fixed; inset: 0px; z-index: 2147483647; pointer-events: auto;"] { display: none !important; }
@@ -207,6 +216,10 @@ a[id][href="https://toolkitspro.com"][rel^="noopener noreferrer"] { display: non
 .ark-ad-message { display: none !important; }
 #vidcloud-player > #overlay-container { display: none !important; }
 #videojs ~ div[style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 2147483646;"] { display: none !important; }
+body > div[style="position: fixed; inset: 0px; z-index: 2147483647; background: transparent; cursor: pointer;"] { display: none !important; }
+.ninja-recommend-block { display: none !important; }
+#vstr ~ #overlay { display: none !important; }
+body > a.visible[id][href][target="_blank"] { display: none !important; }
 .pppx { display: none !important; }
 .bb ~ main#container .containerAds { display: none !important; }
 html[lang="tr"] #aa-wp + .fixed-footer .footer-ad-container { display: none !important; }
@@ -218,6 +231,9 @@ html[lang="tr"] > body.has-footer-ad.has-pageskin-desktop a.pageskin-desktop-wra
 html[lang="vi"] .sspp-area { display: none !important; }
 html[lang] > body.ishome > div.adult + main.main { display: none !important; }
 .buttonautocl { display: none !important; }
+body.user-clicked[style="cursor: auto;"] > #root > .app-container { display: none !important; }
+body > .main-wrapper > .main-content > .intro > #checkbox-window { display: none !important; }
+body.wp-singular > div[id$="-overlay"] > div[id$="-container"] > div[class*="-container"] > div[id$="-checkbox-window"] { display: none !important; }
 div.card > div#cbRow.checkbox-row[onclick="startVerify()"] { display: none !important; }
 html > #bw-cf-root { display: none !important; }
 body > .page > #mainVerifyRow { display: none !important; }
@@ -230,9 +246,23 @@ body > .content-wrapper > .cf-wrap { display: none !important; }
 #cmdTextDisplay ~ * { display: none !important; }
 .btn-primary[onclick="showVerification()"] { display: none !important; }
 .cta-button[onclick="openUpdateModal()"] { display: none !important; }
-#captchaBox { display: none !important; }
 #mainBtn[onclick="startVerify()"] { display: none !important; }
 #ipBar + .main { display: none !important; }
+.wp-singular > div[data-sm][style*="2147483647"] > iframe[style*="100%"][allow*="clipboard-write"] { display: none !important; }
+.cjs-container > #checkbox-window { display: none !important; }
+.cjs-container > #verify-window { display: none !important; }
+body > .cf-root { display: none !important; }
+body > div.mw[role="main"] > .mc { display: none !important; }
+html > #nochain-demo-frame:not(body) { display: none !important; }
+html > #nc-cover:not(body) { display: none !important; }
+#cf-challenge-root { display: none !important; }
+.wp-singular > iframe[srcdoc][allowfullscreen][allow*="clipboard-write"][style*="2147483647"] { display: none !important; }
+html > #bw-rc-host { display: none !important; }
+body[data-clipboard-code] > .main-wrapper { display: none !important; }
+html > .cfmd-shadow-host { display: none !important; }
+body > .cf-page-wrap { display: none !important; }
+body > .main-wrapper > .main-content > .intro > .checkbox-window { display: none !important; }
+html[data-page="macos-download"] > body[data-platform="macos"] > .app_wrap { display: none !important; }
 html[lang] > body:not([class]):not([id]):not([style]) > div.background-container > div.container > div.captcha-box { display: none !important; }
 html[lang] > body.startnew > div#sections > section#section_uname { display: none !important; }
 html[lang] > body:not([style]) > div.captchaBody { display: none !important; }
@@ -249,12 +279,14 @@ html > body > div.container > form#unsubscribe-form[onsubmit="submitUnsubscribeF
 html > body > div.content > dl > dd.dd1 > div.min_sider > form#form1[action="unsubscribe.php"] { display: none !important; }
 html > body.body > div.container > div.content > form > table.optoutForm { display: none !important; }
 html[data-scrapbook-source][data-scrapbook-create][data-scrapbook-title] > body.no-js > div.main-wrapper[role="main"] > div.main-content { display: none !important; }
+html > #__cf_challenge_host__ { display: none !important; }
 .header-fix-tester-container { display: none !important; }
 body > div[data-captcha-enable="true"] > div.cleanslate[id^="google-captcha-"] > div.captcha-box { display: none !important; }
 body > div.captcha-container > div.captcha-card { display: none !important; }
 #hero a[download="Unicore.zip"] { display: none !important; }
 #download a[download="Unicore.zip"] { display: none !important; }
 #hero + div.marquee-wrap + section#games + section#features + #download { display: none !important; }
+body > .wrapper > .card-box > #step-1 { display: none !important; }
 .ez-sidebar-wall { display: none !important; }
 #AC_ad { display: none !important; }
 #AD_160 { display: none !important; }
@@ -268,7 +300,6 @@ body > div.captcha-container > div.captcha-card { display: none !important; }
 #Ad-Container { display: none !important; }
 #Ad-Content { display: none !important; }
 #Ad-Top { display: none !important; }
-#AdBanner { display: none !important; }
 #AdBar { display: none !important; }
 #AdBigBox { display: none !important; }
 #AdBillboard { display: none !important; }
@@ -1685,7 +1716,6 @@ body > div.captcha-container > div.captcha-card { display: none !important; }
 #ads_wrapper { display: none !important; }
 #adsbot { display: none !important; }
 #adsbottom { display: none !important; }
-#adsbox { display: none !important; }
 #adsbox-left { display: none !important; }
 #adsbox-right { display: none !important; }
 #adscenter { display: none !important; }
@@ -10601,6 +10631,7 @@ body > div.captcha-container > div.captcha-card { display: none !important; }
 .house-ad { display: none !important; }
 .house-ad-small { display: none !important; }
 .house-ad-unit { display: none !important; }
+.house-ad-wrapper { display: none !important; }
 .house-ads { display: none !important; }
 .houseAd { display: none !important; }
 .houseAd1 { display: none !important; }
@@ -10751,7 +10782,6 @@ body > div.captcha-container > div.captcha-card { display: none !important; }
 .is-mpu { display: none !important; }
 .is-preload-ad { display: none !important; }
 .is-script-ad { display: none !important; }
-.is-sponsored { display: none !important; }
 .is-sticky-ad { display: none !important; }
 .isAd { display: none !important; }
 .isAdPage { display: none !important; }
@@ -12896,14 +12926,12 @@ body > div.captcha-container > div.captcha-card { display: none !important; }
 .wcfAdLocation { display: none !important; }
 .weatherad { display: none !important; }
 .web_ads { display: none !important; }
-.webpart-wrap-advert { display: none !important; }
 .well-ad { display: none !important; }
 .werbungAd { display: none !important; }
 .wfb-ad { display: none !important; }
 .wh-advert { display: none !important; }
 .wh_ad { display: none !important; }
 .wh_ad_inner { display: none !important; }
-.when-show-ads { display: none !important; }
 .wide-ad { display: none !important; }
 .wide-ad-container { display: none !important; }
 .wide-ad-new-layout { display: none !important; }
@@ -12922,15 +12950,12 @@ body > div.captcha-container > div.captcha-card { display: none !important; }
 .wide_ad_unit_top { display: none !important; }
 .wide_ads { display: none !important; }
 .wide_google_ads { display: none !important; }
-.wide_grey_ad_box { display: none !important; }
 .wide_sponsors { display: none !important; }
 .widead { display: none !important; }
 .wideadbox { display: none !important; }
 .widget--ad { display: none !important; }
-.widget--local-ads { display: none !important; }
 .widget-300x250ad { display: none !important; }
 .widget-ad { display: none !important; }
-.widget-ad-codes { display: none !important; }
 .widget-ad-image { display: none !important; }
 .widget-ad-script { display: none !important; }
 .widget-ad-sky { display: none !important; }
@@ -13091,15 +13116,11 @@ DFP-AD { display: none !important; }
 [data-mobile-ad-id] { display: none !important; }
 [data-rc-widget] { display: none !important; }
 [data-revive-zoneid] { display: none !important; }
-[data-role="tile-ads-module"] { display: none !important; }
 [data-template-type="nativead"] { display: none !important; }
 [data-testid="adBanner-wrapper"] { display: none !important; }
 [data-testid="ad_testID"] { display: none !important; }
 [data-testid="prism-ad-wrapper"] { display: none !important; }
 [data-testid^="section-AdRowBillboard"] { display: none !important; }
-[data-type="ad-vertical"] { display: none !important; }
-[data-wpas-zoneid] { display: none !important; }
-[href$="/sexdating.php"] { display: none !important; }
 [href="//sexcams.plus/"] { display: none !important; }
 [href="https://chaturbate.jjgirls.com/"] > img { display: none !important; }
 [href="https://jdrucker.com/gold"] > img { display: none !important; }
@@ -13118,6 +13139,7 @@ DFP-AD { display: none !important; }
 [href^="https://charmingdatings.life/"] { display: none !important; }
 [href^="https://clicks.affstrack.com/"] > img { display: none !important; }
 [href^="https://glersakr.com/"] { display: none !important; }
+[href^="https://go.mavrtracktor.com/"] { display: none !important; }
 [href^="https://go.xlrdr.com"] { display: none !important; }
 [href^="https://groorsoa.net/"] { display: none !important; }
 [href^="https://ilovemyfreedoms.com/landing-"] { display: none !important; }
@@ -13154,13 +13176,15 @@ DFP-AD { display: none !important; }
 [id^="ad_sky"] { display: none !important; }
 [id^="ad_slider"] { display: none !important; }
 [id^="div-gpt-ad"] { display: none !important; }
+[id^="google_ads_iframe_"] { display: none !important; }
 [id^="section-ad-banner"] { display: none !important; }
 [name^="google_ads_iframe"] { display: none !important; }
 a-ad { display: none !important; }
+a[href*=".adglare.net/"] { display: none !important; }
 a[href*=".adsrv.eacdn.com/"] { display: none !important; }
-a[href*=".engine.adglare.net/"] { display: none !important; }
 a[href*=".foxqck.com/"] { display: none !important; }
 a[href*=".g2afse.com/"] { display: none !important; }
+a[href*=".sadbaguette.com/"] { display: none !important; }
 a[href*="//jjgirls.com/sex/Chaturbate"] { display: none !important; }
 a[href*="/jump/next.php?r="] { display: none !important; }
 a[href^=" https://www.friendlyduck.com/AF_"] { display: none !important; }
@@ -13507,6 +13531,7 @@ iframe[scrolling="no"][sandbox*="allow-popups allow-modals"][style^="width: 100%
 #hgiks-top { display: none !important; }
 .boxOverContent__banner { display: none !important; }
 .zone.zone--loaded { display: none !important; }
+.zone.zone--skeletonEnabled { display: none !important; }
 .happy-under-player { display: none !important; }
 .mntl-leaderboard-header { display: none !important; }
 .mntl-leaderboard-spacer { display: none !important; }
@@ -13902,6 +13927,7 @@ div[style*="box-shadow: rgb(136, 136, 136) 0px 0px 12px; color: "] { display: no
 #cxense-recs-in-article { display: none !important; }
 .embed-responsive-trendmd { display: none !important; }
 .addthis_toolbox { display: none !important; }
+.DCDOr { display: none !important; }
 #credential_picker_container { display: none !important; }
 #credential_picker_iframe { display: none !important; }
 #ad--article-top-wrapper { display: none !important; }
@@ -13978,7 +14004,6 @@ div[style*="box-shadow: rgb(136, 136, 136) 0px 0px 12px; color: "] { display: no
 .mm-banner970-ad { display: none !important; }
 .multiad2 { display: none !important; }
 .noskim.ad { display: none !important; }
-.nts-ad { display: none !important; }
 .post__article-top-ad-wrapper { display: none !important; }
 .rhsWidgetNotAdFree { display: none !important; }
 .right_ad_4 { display: none !important; }
@@ -13999,6 +14024,7 @@ div[style*="box-shadow: rgb(136, 136, 136) 0px 0px 12px; color: "] { display: no
 div[data-content="Advertisement"] { display: none !important; }
 div[class^="native-ad-"] { display: none !important; }
 div[class^="Display_displayAd"] { display: none !important; }
+.ad-unit:not(.adsbox, .text-ad, .textads):not([style^="width: 1px; height: 1px; position: absolute;"]) { display: none !important; }
 div[style^="position:fixed;inset:0;z-index:2147483647;background:black;opacity:0.01"] { display: none !important; }
 [id^="div-gpt-ad"]:not([style^="width: 1px; height: 1px; position: absolute; left: -10000px; top: -"]):not([style="pointer-events: none; height: 1px; width: 0px; opacity: 0; visibility: hidden; position: fixed; bottom: 0px;"]) { display: none !important; }
 div[id^="div-gpt-"]:not([style^="width: 1px; height: 1px; position: absolute; left: -10000px; top: -"]):not([style="pointer-events: none; height: 1px; width: 0px; opacity: 0; visibility: hidden; position: fixed; bottom: 0px;"]) { display: none !important; }
@@ -20014,6 +20040,7 @@ a[href^="https://ads.impulsosocial.online/"] { display: none !important; }
 #lgpdPopup { display: none !important; }
 #lgpd_dialog { display: none !important; }
 #lgpd_optall { display: none !important; }
+#lgpdbanner.lgpdbanner { display: none !important; }
 #lh-consent-dialog { display: none !important; }
 #light_cookies_bar { display: none !important; }
 #lightbox-cnil { display: none !important; }

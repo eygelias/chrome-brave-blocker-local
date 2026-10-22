@@ -10,11 +10,18 @@ Project-authored code is distributed under **GPL-3.0-only**. See [`LICENSE`](LIC
 
 El código propio del proyecto se distribuye bajo **GPL-3.0-only**. Consulta [`LICENSE`](LICENSE).
 
-## Brave sources
+## Brave sources / Fuentes de Brave
 
-- Brave filter catalog and lists: [brave/adblock-resources](https://github.com/brave/adblock-resources) and [brave/adblock-lists](https://github.com/brave/adblock-lists), **MPL-2.0**.
-- Vendored `brave-yt-sabr-fix.js`: source snapshot [`b77c575`](https://github.com/brave/adblock-resources/blob/b77c5758b9c752b24a1d2184b978ffce1f8f4611/resources/brave-yt-sabr-fix.js), **MPL-2.0**.
+- Brave filter catalog and lists: [brave/adblock-resources](https://github.com/brave/adblock-resources) (commit `6da9b247c32b55f1ff4d1b8764e5256e6ca08969`) and [brave/adblock-lists](https://github.com/brave/adblock-lists) (commit `ff303c3097cb0f195d535186b40287c2b3e8e7a6`), **MPL-2.0**.
+- Vendored YouTube SABR delay fix (`brave-yt-sabr-fix.js`), **MPL-2.0**.
+- Vendored YouTube navigation fix (`brave-youtube-navigation-fix.js`), **MPL-2.0**.
+- Vendored YouTube theater mode cookie persistence fix (`brave-youtube-theater-fix.js`), **MPL-2.0**.
+- Vendored YouTube playback speed persistence fix (`brave-youtube-playback-speed-fix.js`), **MPL-2.0**.
+- Vendored Video background play fix (`brave-video-bg-play-update.js`): based on Mozilla video-bg-play, **MIT**.
+- Vendored Twitch video ad-free solution (`vaft-ublock-origin.js`): based on TwitchAdSolutions / Brave adblock-resources, **GPL-3.0** / **MPL-2.0**.
+- Brave Query Filter and Clean URLs tracking parameters specifications: derived from Brave Shields components `cemdlagocoimleflkfkjoihojfainiho` (Query Filter) and `afalakplffnnnlkncjhbmahjfjhmlkal` (Local Data Files / Clean URLs), **MPL-2.0**.
 - Full MPL-2.0 text: [`LICENSES/MPL-2.0.txt`](LICENSES/MPL-2.0.txt).
+- Full MIT text: [`LICENSES/MIT.txt`](LICENSES/MIT.txt).
 
 Brave trademarks and logos are not licensed by MPL-2.0 and are not used to imply endorsement.
 

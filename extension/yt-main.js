@@ -6,7 +6,8 @@
 
   const adKeys = new Set([
     'adPlacements', 'playerAds', 'adSlots', 'adBreakHeartbeatParams',
-    'adEngagementPanels', 'adSafetyReason', 'adTracking'
+    'adEngagementPanels', 'adSafetyReason', 'adTracking', 'adPlacement',
+    'adPlaybackTracking', 'instreamAd', 'adSlotRenderer'
   ]);
 
   const shouldCleanUrl = (url) => {
@@ -26,6 +27,8 @@
 
       if (obj.playerConfig?.adConfig) obj.playerConfig.adConfig = {};
       if (obj.playbackTracking?.adTracking) delete obj.playbackTracking.adTracking;
+      if (obj.playbackTracking?.atrUrl) delete obj.playbackTracking.atrUrl;
+      if (obj.playbackTracking?.qoeUrl) delete obj.playbackTracking.qoeUrl;
 
       if (Array.isArray(obj)) {
         for (let i = obj.length - 1; i >= 0; i--) {
@@ -34,6 +37,7 @@
             value.adSlotRenderer || value.displayAdRenderer || value.promotedSparklesWebRenderer ||
             value.companionAdRenderer || value.playerLegacyDesktopWatchAdsRenderer ||
             value.instreamVideoAdRenderer || value.videoAdRenderer || value.adSurveyRenderer ||
+            value.adPlacementRenderer || value.statementBannerRenderer ||
             value.command?.reelWatchEndpoint?.adClientParams?.isAd
           )) obj.splice(i, 1);
           else stack.push(value);
@@ -51,7 +55,7 @@
 
   const cleanText = (text, url = '') => {
     if (typeof text !== 'string') return text;
-    if (!shouldCleanUrl(url) && !/(adPlacements|playerAds|adSlots)/.test(text)) return text;
+    if (!shouldCleanUrl(url) && !/(adPlacements|playerAds|adSlots|adPlacement)/.test(text)) return text;
     try { return JSON.stringify(cleanJson(JSON.parse(text))); }
     catch { return text; }
   };
@@ -74,7 +78,7 @@
   JSON.parse = new Proxy(nativeParse, {
     apply(target, thisArg, args) {
       const output = Reflect.apply(target, thisArg, args);
-      return typeof args[0] === 'string' && /(adPlacements|playerAds|adSlots)/.test(args[0])
+      return typeof args[0] === 'string' && /(adPlacements|playerAds|adSlots|adPlacement)/.test(args[0])
         ? cleanJson(output)
         : output;
     }
@@ -99,55 +103,36 @@
       statusText: response.statusText,
       headers
     });
-    try {
-      Object.defineProperty(output, 'url', { value: response.url, configurable: true });
-      Object.defineProperty(output, 'redirected', { value: response.redirected, configurable: true });
-      Object.defineProperty(output, 'type', { value: response.type, configurable: true });
-    } catch {}
+    Object.defineProperty(output, 'url', { value: response.url });
     return output;
   };
 
-  const nativeResponseJson = Response.prototype.json;
+  const nativeJson = Response.prototype.json;
   Response.prototype.json = async function() {
-    const data = await nativeResponseJson.apply(this, arguments);
+    const data = await nativeJson.apply(this, arguments);
     return shouldCleanUrl(this.url) ? cleanJson(data) : data;
   };
 
   const nativeOpen = XMLHttpRequest.prototype.open;
   const nativeSend = XMLHttpRequest.prototype.send;
-  XMLHttpRequest.prototype.open = function(method, url) {
+
+  XMLHttpRequest.prototype.open = function(_method, url) {
     this.__braveLikeUrl = url;
     return nativeOpen.apply(this, arguments);
   };
+
   XMLHttpRequest.prototype.send = function() {
-    const cleanResponse = function() {
-      if (this.readyState !== 4) return;
-      this.removeEventListener('readystatechange', cleanResponse);
-      if (this.responseType && this.responseType !== 'text') return;
-      const url = this.__braveLikeUrl || this.responseURL;
-      if (!shouldCleanUrl(url)) return;
-      let original;
-      try { original = this.responseText; }
-      catch { return; }
-      const cleaned = cleanText(original, url);
-      if (cleaned === original) return;
-      try {
-        Object.defineProperty(this, 'responseText', { value: cleaned });
-        Object.defineProperty(this, 'response', { value: cleaned });
-      } catch {}
-    };
-    this.addEventListener('readystatechange', cleanResponse);
+    if (shouldCleanUrl(this.__braveLikeUrl)) {
+      this.addEventListener('readystatechange', function() {
+        if (this.readyState === 4) {
+          try {
+            const cleaned = cleanText(this.responseText, this.__braveLikeUrl);
+            Object.defineProperty(this, 'responseText', { value: cleaned });
+            Object.defineProperty(this, 'response', { value: cleaned });
+          } catch {}
+        }
+      }, { once: true });
+    }
     return nativeSend.apply(this, arguments);
   };
-
-  const fallbackSkip = () => {
-    const player = document.querySelector('.html5-video-player.ad-showing');
-    const active = document.activeElement;
-    if (!player || active?.closest?.('ytd-searchbox, input, textarea, [contenteditable="true"]')) return;
-    document.querySelector(
-      '.ytp-ad-skip-button,.ytp-ad-skip-button-modern,.ytp-skip-ad-button,' +
-      'button[aria-label*="Saltar"],button[aria-label*="Omitir"],button[aria-label*="Skip"]'
-    )?.click();
-  };
-  setInterval(fallbackSkip, 750);
 })();

@@ -19,7 +19,7 @@ BUILT_RULESETS = BUILD / "rulesets"
 PACKED_RULESETS = BUILD / "packed-rulesets"
 FIREFOX_RULESETS = BUILD / "firefox-rulesets"
 FIREFOX_MAX_STATIC_RULES = 30_000
-FIREFOX_RULE_BUDGETS = {1: 18_500, 2: 8_000, 3: 554, 4: 1_743, 5: 1_181, 6: 22}
+FIREFOX_RULE_BUDGETS = {1: 17_500, 2: 7_500, 3: 2_000, 4: 1_743, 5: 1_181, 6: 22, 7: 6}
 CHROME = ROOT / "extension"
 FIREFOX = ROOT / "firefox"
 VENDOR = ROOT / "vendor"
@@ -34,6 +34,10 @@ YOUTUBE_MATCHES = [
     "*://tv.youtube.com/*",
     "*://www.youtubekids.com/*",
     "*://www.youtube-nocookie.com/*",
+]
+
+TWITCH_MATCHES = [
+    "*://*.twitch.tv/*",
 ]
 
 
@@ -56,7 +60,7 @@ def download(url: str) -> bytes:
         try:
             request = urllib.request.Request(
                 url,
-                headers={"User-Agent": "Mozilla/5.0 Brave-like-blocker-local-builder/3.0"},
+                headers={"User-Agent": "Mozilla/5.0 Brave-like-blocker-local-builder/3.1"},
             )
             with urllib.request.urlopen(request, timeout=90) as response:
                 data = response.read()
@@ -68,6 +72,127 @@ def download(url: str) -> bytes:
             if attempt < 2:
                 time.sleep(2**attempt)
     raise RuntimeError(f"Failed to download {url}: {last_error}")
+
+
+def generate_clean_urls_rules(start_id: int = 70001) -> list[dict]:
+    return [
+        {
+            "id": start_id,
+            "priority": 2,
+            "action": {
+                "type": "redirect",
+                "redirect": {
+                    "transform": {
+                        "removeParams": [
+                            "__hsfp", "__hssc", "__hstc", "__s", "_bhlid", "_branch_match_id", "_branch_referrer",
+                            "_gl", "_hsenc", "_openstat", "at_recipient_id", "at_recipient_list", "bbeml",
+                            "bsft_clkid", "bsft_uid", "dclid", "et_rid", "fb_action_ids", "fb_comment_id",
+                            "fbclid", "gclid", "guce_referrer", "guce_referrer_sig", "hsCtaTracking", "irclickid",
+                            "mc_eid", "ml_subscriber", "ml_subscriber_hash", "msclkid", "mtm_cid", "oft_c",
+                            "oft_ck", "oft_d", "oft_id", "oft_ids", "oft_k", "oft_lk", "oft_sk", "oly_anon_id",
+                            "oly_enc_id", "pk_cid", "rb_clickid", "s_cid", "sc_customer", "sc_eh", "sc_uid",
+                            "sfmc_activityid", "sfmc_id", "sms_click", "sms_source", "sms_uph", "srsltid",
+                            "ss_email_id", "syclid", "ttclid", "twclid", "unicorn_click_id", "vero_conv",
+                            "vero_id", "vgo_ee", "wbraid", "wickedid", "yclid", "ymclid", "ysclid"
+                        ]
+                    }
+                }
+            },
+            "condition": {
+                "urlFilter": "|http*",
+                "resourceTypes": ["main_frame", "sub_frame"]
+            }
+        },
+        {
+            "id": start_id + 1,
+            "priority": 2,
+            "action": {
+                "type": "redirect",
+                "redirect": {
+                    "transform": {
+                        "removeParams": ["igsh", "igshid", "stkn"]
+                    }
+                }
+            },
+            "condition": {
+                "requestDomains": ["instagram.com"],
+                "resourceTypes": ["main_frame", "sub_frame"]
+            }
+        },
+        {
+            "id": start_id + 2,
+            "priority": 2,
+            "action": {
+                "type": "redirect",
+                "redirect": {
+                    "transform": {
+                        "removeParams": ["ref_src", "ref_url"]
+                    }
+                }
+            },
+            "condition": {
+                "requestDomains": ["twitter.com", "x.com"],
+                "resourceTypes": ["main_frame", "sub_frame"]
+            }
+        },
+        {
+            "id": start_id + 3,
+            "priority": 2,
+            "action": {
+                "type": "redirect",
+                "redirect": {
+                    "transform": {
+                        "removeParams": ["si"]
+                    }
+                }
+            },
+            "condition": {
+                "requestDomains": ["youtube.com", "youtu.be"],
+                "resourceTypes": ["main_frame", "sub_frame"]
+            }
+        },
+        {
+            "id": start_id + 4,
+            "priority": 2,
+            "action": {
+                "type": "redirect",
+                "redirect": {
+                    "transform": {
+                        "removeParams": [
+                            "ascsubtag", "content-id", "crid", "dib", "dib_tag", "geniuslink", "keywords",
+                            "linkCode", "linkId", "pd_rd_i", "pd_rd_r", "pd_rd_w", "pd_rd_wg", "pf_rd_i",
+                            "pf_rd_m", "pf_rd_p", "pf_rd_r", "pf_rd_s", "pf_rd_t", "qid", "ref", "ref_",
+                            "refinements", "rnid", "social_share", "sprefix", "tag", "th", "ufe"
+                        ]
+                    }
+                }
+            },
+            "condition": {
+                "urlFilter": "||amazon.*",
+                "resourceTypes": ["main_frame", "sub_frame"]
+            }
+        },
+        {
+            "id": start_id + 5,
+            "priority": 2,
+            "action": {
+                "type": "redirect",
+                "redirect": {
+                    "transform": {
+                        "removeParams": [
+                            "__cft__%5B0%5D", "__cft__[0]", "__tn__", "acontext", "external_ref",
+                            "gd_impression_id", "idorvanity", "ref", "referrer", "sale_post_id",
+                            "set", "source", "store_visit_source", "with_pv"
+                        ]
+                    }
+                }
+            },
+            "condition": {
+                "requestDomains": ["facebook.com"],
+                "resourceTypes": ["main_frame", "sub_frame"]
+            }
+        }
+    ]
 
 
 def prepare_filters(config: dict) -> tuple[list[str], list[dict]]:
@@ -320,7 +445,7 @@ def build_firefox_rulesets(rulesets: list[dict]) -> tuple[list[dict], dict]:
         for number, source_rules in grouped.items()
     }
     excess = sum(budgets.values()) - FIREFOX_MAX_STATIC_RULES
-    donor_order = [number for number in (5, 6, 1, 4, 3, 2) if number in grouped]
+    donor_order = [number for number in (5, 6, 1, 4, 3, 2, 7) if number in grouped]
     donor_order.extend(number for number in sorted(grouped) if number not in donor_order)
     if excess > 0:
         for number in donor_order:
@@ -333,7 +458,7 @@ def build_firefox_rulesets(rulesets: list[dict]) -> tuple[list[dict], dict]:
         raise ValueError("Unable to fit Firefox essential rules within its static-rule limit")
 
     spare = FIREFOX_MAX_STATIC_RULES - sum(budgets.values())
-    recipient_order = [number for number in (1, 2, 4, 3, 5, 6) if number in grouped]
+    recipient_order = [number for number in (1, 2, 4, 3, 5, 6, 7) if number in grouped]
     recipient_order.extend(number for number in sorted(grouped) if number not in recipient_order)
     for number in recipient_order:
         addition = min(spare, len(grouped[number]) - budgets[number])
@@ -421,7 +546,13 @@ def manifest(version: str, rulesets: list[dict], target: str) -> dict:
             },
             {
                 "matches": YOUTUBE_MATCHES,
-                "js": ["yt-main.js"],
+                "js": [
+                    "brave-youtube-navigation-fix.js",
+                    "brave-youtube-theater-fix.js",
+                    "brave-youtube-playback-speed-fix.js",
+                    "brave-video-bg-play-update.js",
+                    "yt-main.js",
+                ],
                 "run_at": "document_start",
                 "all_frames": False,
                 "world": "MAIN",
@@ -431,6 +562,13 @@ def manifest(version: str, rulesets: list[dict], target: str) -> dict:
                 "js": ["brave-yt-sabr-fix.js"],
                 "run_at": "document_start",
                 "all_frames": False,
+                "world": "MAIN",
+            },
+            {
+                "matches": TWITCH_MATCHES,
+                "js": ["vaft-ublock-origin.js"],
+                "run_at": "document_start",
+                "all_frames": True,
                 "world": "MAIN",
             },
         ],
@@ -468,13 +606,23 @@ def write_targets(
 ) -> dict:
     canonical_youtube = CHROME / "yt-main.js"
     sabr_source = VENDOR / "brave-yt-sabr-fix.js"
+    nav_fix_source = VENDOR / "brave-youtube-navigation-fix.js"
+    theater_fix_source = VENDOR / "brave-youtube-theater-fix.js"
+    speed_fix_source = VENDOR / "brave-youtube-playback-speed-fix.js"
+    bg_play_source = VENDOR / "brave-video-bg-play-update.js"
+    twitch_source = VENDOR / "vaft-ublock-origin.js"
     notices = ROOT / "THIRD_PARTY_NOTICES.md"
     project_license = ROOT / "LICENSE"
     mpl_license = ROOT / "LICENSES" / "MPL-2.0.txt"
-    if not canonical_youtube.is_file() or not sabr_source.is_file():
-        raise FileNotFoundError("Missing canonical YouTube scripts")
-    if not all(path.is_file() for path in (notices, project_license, mpl_license)):
-        raise FileNotFoundError("Missing project or third-party license files")
+    mit_license = ROOT / "LICENSES" / "MIT.txt"
+    required_files = [
+        canonical_youtube, sabr_source, nav_fix_source, theater_fix_source,
+        speed_fix_source, bg_play_source, twitch_source, notices,
+        project_license, mpl_license, mit_license
+    ]
+    for rf in required_files:
+        if not rf.is_file():
+            raise FileNotFoundError(f"Missing required script or license file: {rf}")
 
     firefox_rulesets, firefox_selection = build_firefox_rulesets(rulesets)
     if FIREFOX.exists():
@@ -487,11 +635,18 @@ def write_targets(
     for target in (CHROME, FIREFOX):
         (target / "cosmetic.css").write_text(cosmetic_css, encoding="utf-8")
         shutil.copy2(sabr_source, target / "brave-yt-sabr-fix.js")
+        shutil.copy2(nav_fix_source, target / "brave-youtube-navigation-fix.js")
+        shutil.copy2(theater_fix_source, target / "brave-youtube-theater-fix.js")
+        shutil.copy2(speed_fix_source, target / "brave-youtube-playback-speed-fix.js")
+        shutil.copy2(bg_play_source, target / "brave-video-bg-play-update.js")
+        shutil.copy2(twitch_source, target / "vaft-ublock-origin.js")
         (target / "LICENSES").mkdir(parents=True, exist_ok=True)
         shutil.copy2(project_license, target / "LICENSE")
         shutil.copy2(notices, target / "THIRD_PARTY_NOTICES.md")
         shutil.copy2(mpl_license, target / "LICENSES" / "MPL-2.0.txt")
-    shutil.copy2(canonical_youtube, FIREFOX / "yt-main.js")
+        shutil.copy2(mit_license, target / "LICENSES" / "MIT.txt")
+        if target != CHROME:
+            shutil.copy2(canonical_youtube, target / "yt-main.js")
 
     generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     conversion_report_path = BUILT_RULESETS / "conversion-report.json"
@@ -685,6 +840,26 @@ def build() -> dict:
     filter_texts, source_records = prepare_filters(config)
     cosmetic_css, cosmetic_count = build_cosmetic_css(filter_texts)
     run_converter()
+
+    # Generate Group 7: Brave Query Filter / Clean URLs
+    clean_rules = generate_clean_urls_rules(start_id=70001)
+    group7_dir = BUILT_RULESETS / "ruleset_7"
+    group7_dir.mkdir(parents=True, exist_ok=True)
+    write_json(group7_dir / "ruleset_7.json", clean_rules)
+    clean_bytes = len(json.dumps(clean_rules, ensure_ascii=False).encode("utf-8"))
+    source_records.append({
+        "id": 7,
+        "name": "Brave query parameter tracking protection (clean URLs)",
+        "sources": [
+            {
+                "name": "Brave Query Filter & Clean URLs specifications",
+                "url": "https://github.com/brave/brave-core/tree/master/components/brave_shields",
+                "bytes": clean_bytes,
+                "sha256": sha256(json.dumps(clean_rules, ensure_ascii=False).encode("utf-8")),
+            }
+        ],
+    })
+
     rulesets = collect_rulesets()
     info = write_targets(
         package["version"],

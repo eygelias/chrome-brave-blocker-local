@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Brave-like Blocker Local (Chrome)",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "Bloqueador local inspirado en Brave | Local ad/tracker blocker inspired by Brave.",
   "homepage_url": "https://github.com/eygelias/chrome-brave-blocker-local",
   "permissions": [
@@ -56,6 +56,11 @@
         "id": "ruleset_6",
         "enabled": true,
         "path": "rulesets/ruleset_6/ruleset_6.json"
+      },
+      {
+        "id": "ruleset_7",
+        "enabled": true,
+        "path": "rulesets/ruleset_7/ruleset_7.json"
       }
     ]
   },
@@ -87,6 +92,10 @@
         "*://www.youtube-nocookie.com/*"
       ],
       "js": [
+        "brave-youtube-navigation-fix.js",
+        "brave-youtube-theater-fix.js",
+        "brave-youtube-playback-speed-fix.js",
+        "brave-video-bg-play-update.js",
         "yt-main.js"
       ],
       "run_at": "document_start",
@@ -102,6 +111,17 @@
       ],
       "run_at": "document_start",
       "all_frames": false,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "js": [
+        "vaft-ublock-origin.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
       "world": "MAIN"
     }
   ],
